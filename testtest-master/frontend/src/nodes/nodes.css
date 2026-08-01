@@ -1,0 +1,222 @@
+/* Shared node shell and per-category accent colors. */
+
+.base-node {
+  --accent: var(--c-default, #8b90a3);
+
+  position: relative;
+  background: var(--bg-node);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 14px 12px 16px;
+  font-family: var(--font-body);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.22);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.base-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 14px 32px rgba(0, 0, 0, 0.3);
+}
+
+.react-flow__node.selected .base-node {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Signal strip: every node reads its
+   category at a glance from this left-edge strip, like a patch cable. */
+.node-accent {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+/* ---------- category accent color ---------- */
+.cat-input { --accent: var(--c-input); }
+.cat-output { --accent: var(--c-output); }
+.cat-llm { --accent: var(--c-llm); }
+.cat-text { --accent: var(--c-text); }
+.cat-math { --accent: var(--c-math); }
+.cat-filter { --accent: var(--c-filter); }
+.cat-delay { --accent: var(--c-delay); }
+.cat-api { --accent: var(--c-api); }
+.cat-merge { --accent: var(--c-merge); }
+
+/* ---------- header ---------- */
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  flex-shrink: 0;
+}
+
+.node-header-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.node-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+}
+
+.node-subtitle {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  line-height: 1.3;
+}
+
+.node-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- body / fields ---------- */
+.node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.node-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.node-field input,
+.node-field textarea,
+.node-field select {
+  width: 100%;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 9px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-primary);
+  resize: vertical;
+}
+
+.node-field input[type='number'] {
+  appearance: textfield;
+}
+
+.node-field input::placeholder,
+.node-field textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+.node-field input:focus,
+.node-field textarea:focus,
+.node-field select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.node-field select {
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position: calc(100% - 16px) center, calc(100% - 11px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.node-footer {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-tertiary);
+}
+
+/* text node variable chips */
+.var-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.var-chip {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--c-text);
+  background: color-mix(in srgb, var(--c-text) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c-text) 35%, transparent);
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+/* ---------- handles ---------- */
+.node-handle.react-flow__handle {
+  width: 9px;
+  height: 9px;
+  background: var(--bg-node);
+  border: 2px solid var(--accent);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.node-handle.react-flow__handle:hover {
+  transform: scale(1.3);
+  background: var(--accent);
+}
+
+.handle-label {
+  position: absolute;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.handle-label-left {
+  left: 9px;
+}
+
+.handle-label-right {
+  right: 9px;
+}

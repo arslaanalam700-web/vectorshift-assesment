@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* surfaces */
+  --bg-canvas: #0b1020;
+  --bg-canvas-alt: #111827;
+  --bg-node: #131a2a;
+  --bg-panel: #101826;
+  --border: #273244;
+
+  /* text */
+  --text-primary: #e7e9ee;
+  --text-secondary: #8b90a3;
+  --text-tertiary: #5c6178;
+
+  /* type */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Category accents: one signal color per node type. */
+  --c-input: #4fd1c5;
+  --c-output: #f6ad55;
+  --c-llm: #b794f6;
+  --c-text: #63b3ed;
+  --c-math: #68d391;
+  --c-filter: #fc8181;
+  --c-delay: #f6e05e;
+  --c-api: #ed64a6;
+  --c-merge: #7f9cf5;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(127, 156, 245, 0.16), transparent 34%),
+    linear-gradient(180deg, #0b1020 0%, #090d18 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.react-flow {
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(9, 14, 27, 0.98)),
+    var(--bg-canvas);
+}
+
+.react-flow__controls {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.react-flow__controls button {
+  background: var(--bg-node);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  fill: var(--text-primary);
+}
+
+.react-flow__controls button:hover {
+  background: #262a33;
+}
+
+.react-flow__minimap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(13, 18, 32, 0.96);
+}
+
+.react-flow__edge-path {
+  stroke: #5b6478;
+  stroke-width: 1.75;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #a5b4fc;
+}
+
+.react-flow__attribution {
+  display: none;
+}
